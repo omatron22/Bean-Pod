@@ -10,43 +10,48 @@
         border-radius: 10px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         align-items: center;
 
         img{
             width: 100px;
         }
 
-        .logo{
-            color:rgb(92, 158, 92);
-            font-weight: bold;
-            font-size: 24px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
         form{
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 30px;
 
-            input {
-                padding: 15px;
-                border: none;
-                width: 250px;
-                border-bottom: 1px solid rgb(92, 158, 92);
-            &::placeholder{
-                color: rgb(175,175,175);
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                input {
+                    padding: 15px;
+                    border: none;
+                    width: 250px;
+                    border-bottom: 1px solid rgb(92, 158, 92);
+                &::placeholder{
+                    color: rgb(175,175,175);
+                }
+                }  
             }
-            }
-            
             button{
                 background-color: rgb(92, 158, 92);
                 color: white;
                 padding: 10px;
+                border-radius: 5px;
                 font-weight: bold;
                 border: none;
                 cursor: pointer;
             }
         }
+        button{
+            background-color:white;
+            padding: none;
+            border: none;
+            cursor: pointer;
+        }
+       
     }
 }
