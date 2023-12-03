@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="261" height="261" viewBox="0 0 261 261">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        filter: url(#Ellipse_3);
+      }
+
+      .cls-5 {
+        filter: url(#Ellipse_2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.163" y1="0.143" x2="0.8" y2="0.901" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#bfffa7"/>
+      <stop offset="1" stop-color="#4bffc8"/>
+    </linearGradient>
+    <filter id="Ellipse_2" x="40" y="41" width="186" height="186" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="-0.209" y1="-0.188" x2="1.241" y2="1.19" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffffaf"/>
+      <stop offset="1" stop-color="#a3ff55"/>
+    </linearGradient>
+    <filter id="Ellipse_3" x="58" y="59" width="149" height="149" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(-549 -320)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" class="cls-1" cx="130.5" cy="130.5" r="130.5" transform="translate(549 320)"/>
+    <g class="cls-5" transform="matrix(1, 0, 0, 1, 549, 320)">
+      <circle id="Ellipse_2-2" data-name="Ellipse 2" class="cls-2" cx="84" cy="84" r="84" transform="translate(47 47)"/>
+    </g>
+    <g class="cls-4" transform="matrix(1, 0, 0, 1, 549, 320)">
+      <circle id="Ellipse_3-2" data-name="Ellipse 3" class="cls-3" cx="65.5" cy="65.5" r="65.5" transform="translate(65 65)"/>
+    </g>
+  </g>
+</svg>
