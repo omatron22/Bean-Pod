@@ -6,15 +6,17 @@ export const Register = () => {
     <div className='formContainer'>
         <div className='formWrapper'>
             <img src={Logo} alt='React Image'/>
+            <span className = "title">Register for BeanPod</span>
             <form>
-                <form>
                 <input type='text' placeholder='display name'/>
                 <input type='email' placeholder='email'/>
                 <input type='password' placeholder='password'/>
-                </form> 
-            <button>Sign up</button> 
+                <input type='file' id ='file'/>
+                <label htmlFor = "file">
+                </label>
+                <button>Sign up</button> 
             </form>
-            <button>Already have an account?</button>
+            <p>Have an account? Login</p>
         </div>
     </div>
   )

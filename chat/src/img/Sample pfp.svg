@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="239" height="241.639" viewBox="0 0 239 241.639">
+  <defs>
+    <filter id="Path_4" x="4.75" y="10.298" width="207.838" height="231.341" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Sample_pfp" data-name="Sample pfp" transform="translate(-873 -314)">
+    <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(873 314)" fill="#f0beff" stroke="#fff" stroke-width="1">
+      <circle cx="119.5" cy="119.5" r="119.5" stroke="none"/>
+      <circle cx="119.5" cy="119.5" r="119" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 873, 314)" filter="url(#Path_4)">
+      <path id="Path_4-2" data-name="Path 4" d="M2877.586,489.977s54.336-36.5,107.393-35.724-43.288-41.643-57.717-55.524,154.154-18.732,31.967-60.849,17.362,145.63,23.149,194.174,56.073-92.9,74.764-123.863-16.775-32.445-22.367-43.26,31.642-15.093,31.642-15.093" transform="translate(-2863 -314)" fill="none" stroke="#fff" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
