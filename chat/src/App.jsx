@@ -5,7 +5,7 @@ import Chats from "./components/Chats"
 import "./style.scss"
 function App() {
   return (
-    <Home/>
+    <Register/>
   );
 }
 
