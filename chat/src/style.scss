@@ -41,7 +41,7 @@
                     border: none;
                     width: 250px;
                     background-color: #ffffff;
-                    border-bottom: 1px solid rgb(92, 158, 92);
+                    border-bottom: 1px solid rgb(157, 157, 157);
                 &::placeholder{
                     color: rgb(175,175,175);
                 }
@@ -72,13 +72,17 @@
     }
 }
 .home {
+    cursor: default;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    //background-color: rgb(153, 210, 169);
 
     .container {
-        border: 1px solid white;
+        border-style:outset;
+        border-color: #727272;
+        border-width: 10px;
         border-radius: 10px;
         width: 65%;
         height: 80%;
@@ -88,54 +92,66 @@
     .sidebar {
         flex: 1;
         border-right: 1px;
-        background-color: #c1ffd6;
+        background-color: #9e9e9e;
         position: relative;
   
         .navbar {
           display: flex;
           align-items: center;
-          background-color: #d9d9d9;
+          background-color: #ebe7e7;
           height: 50px;
-          padding: 10px;
+          padding: 5px;
           justify-content: space-between;
-          color: #ddddf7;
-
-          .name
-          {
+          color: #7a7a7a;
+          
+          
+          form{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            .name
+            {
               font-family: 'Courier New', Courier, monospace;
               font-size: 30;
-              color: green;
+              color: rgb(5, 9, 5);
               justify-content: left;
+            }
+
+            img
+            {
+              width: 45px;
+            } 
           }
 
-          img
-          {
-              width: 50px;
-          }
+          
   
             .user {
                 display: flex;
-                gap: 10px;
+                align-items: center;
+                gap: 5px;
 
                 img {
                 background-color: #ddddf7;
-                height: 24px;
-                width: 24px;
+                height: 35px;
+                width: 35px;
                 border-radius: 50%;
                 object-fit: cover;
                 }
 
                 button {
-                background-color: #cccaff;
+                background-color: #adadad;
                 color: #ddddf7;
-                font-size: 10px;
+                font-size: 11px;
                 border: none;
                 cursor: pointer;
+                padding: 4px;
+                border-radius: 2px 2px 2px 2px;
+                
                 }
             }
         }
         .search{
-            border-bottom: 1px solid gray;
+            border-bottom: 1px solid rgb(228, 224, 224);
 
             .searchForm{
                 padding: 10px;
@@ -143,11 +159,11 @@
                 input{
                     background-color: transparent;
                     border: none;
-                    color: black;
+                    color: rgb(255, 255, 255);
                     outline: none;
 
                     &::placeholder{
-                        color: darkgray;
+                        color: rgb(232, 230, 230);
                     }
                 }
             }
@@ -157,7 +173,7 @@
             padding: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             color: white;
             cursor: pointer;
 
@@ -180,7 +196,7 @@
                 }
                 p{
                     font-size: 14px;
-                    color: lightgray;
+                    color: rgb(225, 223, 223);
                 }
             }
 
@@ -189,15 +205,16 @@
     .chat
     {
         flex: 2;
-        background-color: #a9ffac;
+        background-color: #cbcbcb;
 
         .chatInfo{
-            height: 50px;
-            background-color: gray;
+            
+            height: 40px;
+            background-color: rgb(139, 138, 138);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px;color: lightgray;
+            padding: 10px;color: rgb(245, 240, 240);
 
         }
 
@@ -214,7 +231,7 @@
         .messages{
             background-color: lightgrey;
             padding: 10px;
-            height: calc(100% - 160px);
+            height: calc(100% - 150px);
             overflow: scroll;
 
             .message{
@@ -259,7 +276,7 @@
                     }
 
                     p{
-                        background-color: rgb(103, 180, 103);
+                        background-color: rgb(101, 101, 101);
                         color: white;
                         border-radius: 10px 0px 10px 10px;
                     }
@@ -302,7 +319,7 @@
                     border: none;
                     padding: 10px 15px;
                     color: white;
-                    background-color: darkolivegreen;
+                    background-color: rgb(112, 156, 115);
                     cursor: pointer;
                 }
             }
