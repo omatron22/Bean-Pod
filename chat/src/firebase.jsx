@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBW0XTW4sPLZ7aVA3Ls71WN0ypt-2St7Lk",
   authDomain: "chat3-ebd53.firebaseapp.com",
@@ -14,22 +15,16 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
+// Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth();
 
-// export const signInWithGoogle = () => {
-//   signInWithPopup(auth, new GoogleAuthProvider());
-// };
-
-// export const logout = () => {
-//   signOut(auth);
-// };
-
-// export { auth };
-
-
+// Initialize Firestore
 const firestore = getFirestore();
+
+// Google Authentication Provider
 const provider = new GoogleAuthProvider();
 
+// Function to handle signing in with Google
 export const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
@@ -42,18 +37,19 @@ export const signInWithGoogle = async () => {
       email: user.email,
       photoURL: user.photoURL,
     }, { merge: true });
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Error signing in with Google: ", error);
   }
-
 };
 
+// Function to handle user sign out
 export const logout = () => {
   signOut(auth);
-}
+};
 
+// Export the auth and firestore instances
 export { auth, firestore };
+
 
 
 
