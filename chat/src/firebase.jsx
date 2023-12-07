@@ -36,6 +36,7 @@ export const signInWithGoogle = async () => {
       displayName: user.displayName,
       email: user.email,
       photoURL: user.photoURL,
+      uid: user.uid,
     }, { merge: true });
 
     await setDoc(doc(firestore, "userChats", user.uid), {});
@@ -51,7 +52,7 @@ export const logout = () => {
 };
 
 // Export the auth and firestore instances
-export { auth, firestore };
+export { auth, firestore};
 
 
 
