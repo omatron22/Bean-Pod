@@ -66,15 +66,15 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <form>
-        <img src={Logo} alt='React Image'/>
-        <div className="name">BeanPod</div>
-      </form>
       {user && (
         <div className="user">
-          <img src={user.photoURL} alt={user.displayName}/>
-          <span>{user.displayName}</span>
-          <button onClick={logout}>Logout</button>
+          <form>
+            <img src={user.photoURL} alt={user.displayName}/>
+            <span>{user.displayName}</span>
+          </form> 
+          <form>
+            <button onClick={logout}>Logout</button>
+          </form>
         </div>
       )}
     </div>
