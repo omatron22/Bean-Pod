@@ -5,15 +5,21 @@ import Chats from "./Chats"
 
 export const Sidebar = () => {
   return (
-    <div className = "sidebar">
-      <form>
-        <Search/>
-        <form>
-          <Chats/>
-        </form>
-      </form>
+    <div className="sidebar">
       <Navbar/>
+      <Search/> 
+      <Chats/>
+      
     </div>
+    // <div className = "sidebar">
+    //   <form>
+    //     <Search/>
+    //     <form>
+    //       <Chats/>
+    //     </form>
+    //   </form>
+    //   <Navbar/>
+    // </div>
 
   );
 };
