@@ -1,409 +1,3 @@
-// @mixin laptop {
-//     @media screen and (max-width: 1200px) {
-//         @content;
-//     }
-// }
-
-// // Color Palette
-// $primary-color: #4caf50; // Green color
-// $secondary-color: #f0f2f5; // Light grey color
-// $navbar-color: #e9ecef; // Navbar color
-// $text-color: #495057; // Text color
-// $hover-color: #66bb6a; // Hover state color
-// $border-color: #e0e0e0; // Border color
-// $gradient-start: lighten($primary-color, 20%); // Gradient start color
-// $gradient-end: darken($secondary-color, 10%); // Gradient end color
-
-// // Global Styles
-// body {
-//     margin: 0;
-//     padding: 0;
-//     font-family: 'Open Sans', sans-serif; // Global font
-// }
-
-// // Homepage Styles
-// .home {
-//     cursor: default;
-//     width: 100vw;
-//     height: 100vh;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: $secondary-color;
-
-//     .container {
-//         border-radius: 10px;
-//         width: 100%;
-//         height: 100%;
-//         display: flex;
-//         overflow: hidden;
-//         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-//         border: 2px solid $border-color;
-//     }
-
-//     .sidebar {
-//         flex: 1;
-//         background: linear-gradient(to bottom, $gradient-start, $gradient-end);
-//         position: relative;
-
-//             .navbar {
-//                 display: flex;
-//                 align-items: center;
-//                 background-color: $navbar-color;
-//                 height: 50px;
-//                 padding: 5px;
-//                 justify-content: space-between;
-//                 color: $text-color;
-
-//                 // Swapping the place of .user with .chatIcons
-//                 .chatIcons {
-//                     display: flex;
-//                     gap: 10px;
-
-//                     img {
-//                         height: 24px;
-//                         cursor: pointer;
-//                     }
-//                 }
-
-//                 form {
-//                     display: flex;
-//                     align-items: center;
-//                     gap: 5px;
-
-//                     .name {
-//                         font-family: 'Roboto', sans-serif;
-//                         font-size: 30px;
-//                         color: darken($primary-color, 20%);
-//                     }
-
-//                     img {
-//                         width: 45px;
-//                     }
-//                 }
-
-//             .user {
-//                 display: flex;
-//                 align-items: center;
-//                 gap: 5px;
-
-//                 img {
-//                     background-color: #ddddf7;
-//                     height: 35px;
-//                     width: 35px;
-//                     border-radius: 50%;
-//                     object-fit: cover;
-//                 }
-
-//                 button {
-//                     background-color: darken($primary-color, 15%);
-//                     color: #ffffff;
-//                     font-size: 11px;
-//                     border: none;
-//                     cursor: pointer;
-//                     padding: 6px 12px;
-//                     border-radius: 4px;
-//                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//                     transition: background-color 0.3s;
-
-//                     &:hover {
-//                         background-color: lighten($primary-color, 10%);
-//                     }
-//                 }
-//             }
-//         }
-    
-//         .search {
-//             border-bottom: 1px solid $border-color;
-
-//             .searchForm {
-//                 padding: 10px;
-
-//                 input {
-//                     background-color: transparent;
-//                     border: none;
-//                     color: $text-color;
-//                     outline: none;
-
-//                     &::placeholder {
-//                         color: darken($text-color, 10%);
-//                     }
-//                 }
-//             }
-//         }
-
-//         .userChat {
-//             padding: 10px;
-//             display: flex;
-//             align-items: center;
-//             gap: 15px;
-//             color: white;
-//             cursor: pointer;
-
-//             &:hover {
-//                 background-color: $hover-color;
-//             }
-
-//             img {
-//                 width: 50px;
-//                 height: 50px;
-//                 border-radius: 50%;
-//                 object-fit: cover;
-//             }
-
-//             .userChatInfo {
-//                 span {
-//                     font-size: 18px;
-//                     font-weight: 500;
-//                 }
-//                 p {
-//                     font-size: 14px;
-//                     color: darken($secondary-color, 20%);
-//                 }
-//             }
-//         }
-//     }
-
-//     .chat {
-//         flex: 3;
-//         background-color: #ffffff;
-
-//             .chatInfo {
-//                 height: 40px;
-//                 background-color: lighten($primary-color, 40%);
-//                 display: flex;
-//                 align-items: center;
-//                 justify-content: space-between;
-//                 padding: 10px;
-//                 color: darken($primary-color, 30%);
-
-//                 // Swapping the place of .chatIcons with .user
-//                 .user {
-//                     display: flex;
-//                     align-items: center;
-//                     gap: 5px;
-
-//                     img {
-//                         background-color: #ddddf7;
-//                         height: 35px;
-//                         width: 35px;
-//                         border-radius: 50%;
-//                         object-fit: cover;
-//                     }
-
-//                     span {
-//                         // Assuming a span element for the user's name
-//                         font-size: 18px;
-//                         color: $text-color;
-//                     }
-
-//                     button {
-//                         background-color: darken($primary-color, 15%);
-//                         color: #ffffff;
-//                         font-size: 11px;
-//                         border: none;
-//                         cursor: pointer;
-//                         padding: 6px 12px;
-//                         border-radius: 4px;
-//                         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//                         transition: background-color 0.3s;
-
-//                         &:hover {
-//                             background-color: lighten($primary-color, 10%);
-//                         }
-//                     }
-//                 }
-// }
-
-//         .messages {
-//             background-color: lightgrey;
-//             padding: 10px;
-//             height: calc(100% - 150px);
-//             overflow: scroll;
-
-//             .message {
-//                 display: flex;
-//                 gap: 20px;
-//                 margin-bottom: 20px;
-
-//                 .messageInfo {
-//                     display: flex;
-//                     flex-direction: column;
-//                     color: gray;
-//                     font-weight: 300;
-
-//                     img {
-//                         width: 40px;
-//                         height: 40px;
-//                         border-radius: 50%;
-//                         object-fit: cover;
-//                     }
-//                 }
-
-//                 .messageContent {
-//                     max-width: 80%;
-//                     display: flex;
-//                     flex-direction: column;
-//                     gap: 10px;
-
-//                     p {
-//                         background-color: white;
-//                         padding: 10px 20px;
-//                         border-radius: 0px 10px 10px 10px;
-//                         max-width: max-content;
-//                     }
-
-//                     img {
-//                         width: 50%;
-//                     }
-//                 }
-
-//                 &.owner {
-//                     flex-direction: row-reverse;
-
-//                     .messageContent {
-//                         align-items: flex-end;
-//                     }
-
-//                     p {
-//                         background-color: rgb(101, 101, 101);
-//                         color: white;
-//                         border-radius: 10px 0px 10px 10px;
-//                     }
-//                 }
-//             }
-//         }
-
-//         .input {
-//             height: 50px;
-//             background-color: white;
-//             padding: 10px;
-//             display: flex;
-//             align-items: center;
-//             justify-content: space-between;
-
-//             input {
-//                 width: 100%;
-//                 border: none;
-//                 outline: none;
-//                 color: gray;
-//                 font-size: 18px;
-
-//                 &::placeholder {
-//                     color: lightgray;
-//                 }
-//             }
-
-//             .send {
-//                 display: flex;
-//                 align-items: center;
-//                 gap: 10px;
-
-//                 img {
-//                     height: 24px;
-//                     cursor: pointer;
-//                 }
-
-//                 button {
-//                     border: none;
-//                     padding: 10px 15px;
-//                     color: white;
-//                     background-color: rgb(112, 156, 115);
-//                     cursor: pointer;
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// // Form Container Styles
-// .formContainer {
-//     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-//     height: 100vh;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-
-//     .formWrapper {
-//         background-color: #e71111; // White background for form
-//         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Adding shadow to form
-//         padding: 20px 60px;
-//         border-radius: 10px;
-//         display: flex;
-//         flex-direction: column;
-//         gap: 20px;
-//         align-items: center;
-
-//         img {
-//             width: 100px;
-//         }
-
-//         .title {
-//             font-family: 'Courier New', Courier, monospace;
-//         }
-
-//         form {
-//             display: flex;
-//             flex-direction: column;
-//             gap: 20px;
-
-//             form {
-//                 display: flex;
-//                 flex-direction: column;
-//                 gap: 15px;
-                
-//                 input {
-//                     padding: 15px;
-//                     border: none;
-//                     width: 250px;
-//                     background-color: #ffffff;
-//                     border-bottom: 1px solid rgb(157, 157, 157);
-
-//                     &::placeholder {
-//                         color: rgb(175,175,175);
-//                     }
-//                 }
-//             }
-
-//             button {
-//                 background-color: rgb(92, 158, 92);
-//                 color: white;
-//                 padding: 10px;
-//                 border-radius: 5px;
-//                 border: none;
-//                 cursor: pointer;
-//             }
-//         }
-
-//         button {
-//             background-color: white;
-//             padding: none;
-//             border: none;
-//             cursor: pointer;
-//         }
-
-//         p {
-//             color: green;
-//             font-size: 12px;
-//             margin-top: 10px;
-//         }
-//     }
-// }
-
-// // Responsive Design
-// @include laptop {
-//     .home {
-//         flex-direction: column;
-
-//         .container {
-//             height: auto;
-//         }
-
-//         .sidebar, .chat {
-//             width: 100%;
-//         }
-//     }
-// }
 @mixin laptop {
     @media screen and (max-width: 1200px) {
         @content;
@@ -416,7 +10,7 @@ $secondary-color: #f0f2f5; // Light grey color
 $tertiary-color: rgb(137, 184, 141);
 $navbar-color: #e9ecef; // Navbar color
 $text-color: #495057; // Text color
-$hover-color: #66bb6a; // Hover state color
+$hover-color: #e0ffe2; // Hover state color
 $border-color: #e0e0e0; // Border color
 $gradient-start: lighten($primary-color, 20%); // Gradient start color
 $gradient-end: darken($secondary-color, 10%); // Gradient end color
@@ -425,7 +19,7 @@ $gradient-end: darken($secondary-color, 10%); // Gradient end color
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif; // Global font
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; // Global font
 }
 
 // Homepage Styles
@@ -724,7 +318,8 @@ body {
         align-items: center;
 
         img {
-            width: 100px;
+            width: 20px;
+            height: 20px;
         }
 
         .title {
@@ -778,7 +373,38 @@ body {
         }
     }
 }
-
+// Google Sign-In Button Styles
+.googleSignIn {
+    background-color: #FFFFFF; // White background
+    color: #5F6368; // Standard Google text color
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; // Space between the icon and text
+    padding: 12px 24px; // Vertical and horizontal padding
+    border: 1px solid #DADCE0; // Standard Google button border
+    border-radius: 4px; // Rounded corners
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif; // Google's standard font
+    font-size: 14px; // Text size, adjust as needed to match image height
+    font-weight: 500; // Medium font weight
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow
+ 
+ 
+    img {
+        height: 20px; // Ensure the Google logo matches the height of the text
+        width: 20px; // Maintain aspect ratio of the Google logo
+       
+    }
+ 
+ 
+    &:hover {
+        background-color: white; // Light grey background on hover for feedback
+        border-color: #C6C6C6; // Slightly darker border on hover
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1); // Enhanced shadow on hover
+    }
+ }
+ 
 // Responsive Design
 @include laptop {
     .home {
@@ -793,7 +419,4 @@ body {
         }
     }
 }
-
-
-
 
