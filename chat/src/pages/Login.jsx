@@ -11,11 +11,11 @@ const Login = () => {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <img src={Logo} alt="Logo" style={{ marginBottom: '20px' }} />
         <div className='formContainer'>
-          <div className='formWrapper'>
+          {/* <div className='formWrapper'> */}
             <button className="googleSignIn" onClick={signInWithGoogle}>
               <img src={googleIcon} alt="Google" /> Sign in with Google
             </button>
-          </div>
+          {/* </div> */}
         </div>
       </div>
 

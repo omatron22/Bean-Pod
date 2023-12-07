@@ -395,7 +395,38 @@ body {
         }
     }
 }
-
+// Google Sign-In Button Styles
+.googleSignIn {
+    background-color: #FFFFFF; // White background
+    color: #5F6368; // Standard Google text color
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; // Space between the icon and text
+    padding: 12px 24px; // Vertical and horizontal padding
+    border: 1px solid #DADCE0; // Standard Google button border
+    border-radius: 4px; // Rounded corners
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif; // Google's standard font
+    font-size: 14px; // Text size, adjust as needed to match image height
+    font-weight: 500; // Medium font weight
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow
+ 
+ 
+    img {
+        height: 20px; // Ensure the Google logo matches the height of the text
+        width: 20px; // Maintain aspect ratio of the Google logo
+       
+    }
+ 
+ 
+    &:hover {
+        background-color: white; // Light grey background on hover for feedback
+        border-color: #C6C6C6; // Slightly darker border on hover
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1); // Enhanced shadow on hover
+    }
+ }
+ 
 // Responsive Design
 @include laptop {
     .home {
