@@ -4,19 +4,21 @@ import Logo from '/src/img/BeanPod_Logo.svg'; // Importing the beanpod logo
 import googleIcon from '/src/img/google-icon.png'; // Importing Google icon
 import beanpod from '/src/img/beanpod.png'; // Importing the beanpod image
 
-
 const Login = () => {
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       {/* Login Section */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <img src={Logo} alt="Logo" style={{ marginBottom: '20px' }} />
-        <div className='formContainer'>
-          {/* <div className='formWrapper'> */}
-            <button className="googleSignIn" onClick={signInWithGoogle}>
-              <img src={googleIcon} alt="Google" /> Sign in with Google
-            </button>
-          {/* </div> */}
+        {/* Wrapper for logo with increased marginTop */}
+        <div style={{ marginTop: '275px' }}> {/* Increase this value to lower the logo more */}
+          <img src={Logo} alt="Logo" style={{ width: '150px', height: 'auto' }} />
+        </div>
+        
+        {/* Google Sign In Button */}
+        <div className='formContainer' style={{ marginTop: '-200px' }}>
+          <button className="googleSignIn" onClick={signInWithGoogle}>
+            <img src={googleIcon} alt="Google" /> Sign in with Google
+          </button>
         </div>
       </div>
 
