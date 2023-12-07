@@ -411,8 +411,9 @@
 }
 
 // Color Palette
-$primary-color: #4caf50; // Green color
+$primary-color: #4a73ed; // Green color
 $secondary-color: #f0f2f5; // Light grey color
+$tertiary-color: rgb(137, 184, 141);
 $navbar-color: #e9ecef; // Navbar color
 $text-color: #495057; // Text color
 $hover-color: #66bb6a; // Hover state color
@@ -452,139 +453,86 @@ body {
         background: linear-gradient(to bottom, $gradient-start, $gradient-end);
         position: relative;
 
-            .navbar {
+        form{
+            height: calc(100% - 90px);
+            padding: 15px;
+            .search {
                 display: flex;
-                align-items: center;
-                background-color: $navbar-color;
-                height: 50px;
-                padding: 5px;
-                justify-content: space-between;
-                color: $text-color;
+                width: 93%;
+                background-color: rgb(199, 210, 243);
+                border-radius: 10px 10px 10px 10px;
+                padding: 10px;
+    
+                .searchForm {
 
-                // Swapping the place of .user with .chatIcons
-                .chatIcons {
-                    display: flex;
-                    gap: 10px;
-
-                    img {
-                        height: 24px;
-                        cursor: pointer;
+                    input {
+                        width: 160%;
+                        background-color: transparent;
+                        border: none;
+                        color: darken($text-color, $amount: 10%);//$text-color;
+                        outline: none;
+    
+                        &::placeholder {
+                            color: lighten($text-color, $amount: 20%);
+                        }
                     }
                 }
+            }
 
-                form {
+            form{
+
+                .userChat {
+                    padding: 5px;
                     display: flex;
                     align-items: center;
-                    gap: 5px;
+                    gap: 12px;
+                    color: rgb(51, 50, 50);
+                    cursor: pointer;
+                    border-radius: 10px 10px 10px 10px;
 
-                    .name {
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 30px;
-                        color: darken($primary-color, 20%);
+                    &:hover {
+                        background-color: lighten($primary-color, 18%);
                     }
 
                     img {
-                        width: 45px;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .userChatInfo {
+                        span {
+                            font-size: 18px;
+                            font-weight: 500;
+                        }
+                        p {
+                            font-size: 14px;
+                            color: rgb(100, 99, 99);
+                        }
                     }
                 }
+            }
+
+            
+        }
+
+        //bar at bottom left of screen
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: $navbar-color;
+            height: 50px;
+            padding: 5px;
+            justify-content: space-between;
+            color: $text-color;
 
             .user {
                 display: flex;
                 align-items: center;
-                gap: 5px;
+                gap: 55px;
 
-                img {
-                    background-color: #ddddf7;
-                    height: 35px;
-                    width: 35px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                button {
-                    background-color: darken($primary-color, 15%);
-                    color: #ffffff;
-                    font-size: 11px;
-                    border: none;
-                    cursor: pointer;
-                    padding: 6px 12px;
-                    border-radius: 4px;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                    transition: background-color 0.3s;
-
-                    &:hover {
-                        background-color: lighten($primary-color, 10%);
-                    }
-                }
-            }
-        }
-    
-        .search {
-            border-bottom: 1px solid $border-color;
-
-            .searchForm {
-                padding: 10px;
-
-                input {
-                    background-color: transparent;
-                    border: none;
-                    color: $text-color;
-                    outline: none;
-
-                    &::placeholder {
-                        color: darken($text-color, 10%);
-                    }
-                }
-            }
-        }
-
-        .userChat {
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: white;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $hover-color;
-            }
-
-            img {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-
-            .userChatInfo {
-                span {
-                    font-size: 18px;
-                    font-weight: 500;
-                }
-                p {
-                    font-size: 14px;
-                    color: darken($secondary-color, 20%);
-                }
-            }
-        }
-    }
-
-    .chat {
-        flex: 3;
-        background-color: #ffffff;
-
-            .chatInfo {
-                height: 40px;
-                background-color: lighten($primary-color, 40%);
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 10px;
-                color: darken($primary-color, 30%);
-
-                // Swapping the place of .chatIcons with .user
-                .user {
+                form{
                     display: flex;
                     align-items: center;
                     gap: 5px;
@@ -596,15 +544,12 @@ body {
                         border-radius: 50%;
                         object-fit: cover;
                     }
-
-                    span {
-                        // Assuming a span element for the user's name
-                        font-size: 18px;
-                        color: $text-color;
-                    }
-
+                }
+                
+                form{
+                    //logout button
                     button {
-                        background-color: darken($primary-color, 15%);
+                        background-color: rgb(121, 121, 226);
                         color: #ffffff;
                         font-size: 11px;
                         border: none;
@@ -619,12 +564,43 @@ body {
                         }
                     }
                 }
-}
 
+                
+            }   
+        }
+    }
+
+    //right side of screen
+    .chat {
+        flex: 3;
+        background-color: #ffffff;
+
+        //bar above messages
+        .chatInfo { 
+            height: 40px;
+            background-color: lighten($tertiary-color, 10%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            color: darken($text-color, 10%);
+
+            .chatIcons {
+                display: flex;
+                gap: 10px;
+
+                img {
+                    height: 40px;
+                    cursor: pointer;
+                  }
+            }
+        }
+
+        //messages sent and received betweem user and selected recipient
         .messages {
             background-color: lightgrey;
             padding: 10px;
-            height: calc(100% - 150px);
+            height: calc(100% - 140px);
             overflow: scroll;
 
             .message {
@@ -643,6 +619,7 @@ body {
                         height: 40px;
                         border-radius: 50%;
                         object-fit: cover;
+                        
                     }
                 }
 
@@ -661,6 +638,7 @@ body {
 
                     img {
                         width: 50%;
+                        border-radius: 10px 10px 10px 10px;
                     }
                 }
 
@@ -672,16 +650,17 @@ body {
                     }
 
                     p {
-                        background-color: rgb(101, 101, 101);
+                        background-color: darken($tertiary-color, $amount: 10%);
                         color: white;
                         border-radius: 10px 0px 10px 10px;
                     }
+                    
                 }
             }
         }
 
         .input {
-            height: 50px;
+            height: 40px;
             background-color: white;
             padding: 10px;
             display: flex;
@@ -714,8 +693,12 @@ body {
                     border: none;
                     padding: 10px 15px;
                     color: white;
-                    background-color: rgb(112, 156, 115);
+                    background-color: darken($tertiary-color, $amount: 20%);
                     cursor: pointer;
+
+                    &:hover {
+                        background-color: darken($tertiary-color, 10%);
+                    }
                 }
             }
         }

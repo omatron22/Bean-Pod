@@ -6,9 +6,13 @@ import Chats from "./Chats"
 export const Sidebar = () => {
   return (
     <div className = "sidebar">
+      <form>
+        <Search/>
+        <form>
+          <Chats/>
+        </form>
+      </form>
       <Navbar/>
-      <Search/>
-      <Chats/>
     </div>
 
   );

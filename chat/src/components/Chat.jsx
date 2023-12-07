@@ -17,7 +17,6 @@ const Chat = () => {
       </div>
       <Messages/>
       <Input/>
-  
     </div>
   );
 };
