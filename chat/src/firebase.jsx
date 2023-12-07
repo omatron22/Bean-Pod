@@ -37,6 +37,9 @@ export const signInWithGoogle = async () => {
       email: user.email,
       photoURL: user.photoURL,
     }, { merge: true });
+
+    await setDoc(doc(firestore, "userChats", user.uid), {});
+    
   } catch (error) {
     console.error("Error signing in with Google: ", error);
   }
