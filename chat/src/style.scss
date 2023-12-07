@@ -285,6 +285,7 @@ body {
 
                 button {
                     border: none;
+                    border-radius: 10px 10px 10px 10px;
                     padding: 10px 15px;
                     color: white;
                     background-color: darken($tertiary-color, $amount: 20%);
