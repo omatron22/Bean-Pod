@@ -1,25 +1,26 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   collection,
   query,
   where,
   getDocs,
-  getDoc, // This was missing
   setDoc,
   doc,
   updateDoc,
-  serverTimestamp, // This was missing
+  serverTimestamp,
+  getDoc,
 } from "firebase/firestore";
 import { firestore as db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
 const Search = () => {
-
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     const q = query(
@@ -31,7 +32,6 @@ const Search = () => {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
-        console.log(doc.id, " => ", doc.data());
       });
     } catch (err) {
       setErr(true);
@@ -44,21 +44,27 @@ const Search = () => {
 
   const handleSelect = async () => {
     //check whether the group(chats in firestore) exists, if not create
+    
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
         : user.uid + currentUser.uid;
+        
+    const docRef = doc(db, "chats", combinedId);
 
     console.log("combinedId: ", combinedId);
     console.log("userId: ", user.uid);
     console.log("currentUser.uid ", currentUser.uid);
+    dispatch({ type: "CHANGE_USER", payload: user });
+        
 
     try {
-      const res = await getDoc(doc(db, "chats", combinedId));
+      const res = await getDoc(docRef);
+      console.log(res);
 
       if (!res.exists()) {
         //create a chat in chats collection
-        await setDoc(doc(db, "chats", combinedId), { messages: [] });
+        await setDoc(docRef, { messages: [] });
 
         //create user chats
         await updateDoc(doc(db, "userChats", currentUser.uid), {
@@ -81,11 +87,11 @@ const Search = () => {
       }
     } catch (err) {}
 
+    
+
     setUser(null);
     setUsername("")
   };
-
-
 
   // Now we return the JSX correctly from the component
   return (

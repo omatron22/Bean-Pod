@@ -1,11 +1,6 @@
-import React from 'react'
-//import Chats from '../components/Chats'
-import Chat from '../components/Chat'
-// import Navbar from '../components/Navbar'
-// import Search from '../components/Search'
-import Sidebar from '../components/Sidebar'
-// import Input from '../components/Input'
-// import Messages from '../components/Messages'
+import React from 'react';
+import Chat from '../components/Chat';
+import Sidebar from '../components/Sidebar';
 
 
 export const Home = () => {
