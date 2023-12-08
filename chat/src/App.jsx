@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
-//import 'antd/dist/antd.css'; // Import Ant Design CSS
-import { Layout } from 'antd'; // Import Layout component from Ant Design
+import { Layout } from 'antd';
 import { ChatContextProvider } from './context/ChatContext';
 import { AuthContextProvider, AuthContext } from './context/AuthContext';
+import './style.less'; // Adjust the path as needed
 
 function App() {
   return (

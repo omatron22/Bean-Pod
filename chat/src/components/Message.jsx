@@ -1,27 +1,10 @@
-// import React from 'react'
-
-// export const Message = () => {
-//   return (
-//     <div className='message owner'>
-//       <div className="messageInfo">
-//         <img src="https://images.pexels.com/photos/16465979/pexels-photo-16465979/free-photo-of-woman-standing-in-a-rapeseed-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
-//         <span>just now</span>
-//       </div>
-//       <div className='messageContent'>
-//         <p>hello</p>
-//          <img src="https://images.pexels.com/photos/16465979/pexels-photo-16465979/free-photo-of-woman-standing-in-a-rapeseed-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
-//       </div>
-//     </div>
-//   )
-// }
-
-
-// export default Message
-
-
 import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+import { Card, Avatar, Typography } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+
+const { Text } = Typography;
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
@@ -33,26 +16,18 @@ const Message = ({ message }) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
 
+  const isOwner = message.senderId === currentUser.uid;
+  const senderPhotoURL = isOwner ? currentUser.photoURL : data.user.photoURL;
+
   return (
-    <div
-      ref={ref}
-      className={`message ${message.senderId === currentUser.uid && "owner"}`}
-    >
-      <div className="messageInfo">
-        <img
-          src={
-            message.senderId === currentUser.uid
-              ? currentUser.photoURL
-              : data.user.photoURL
-          }
-          alt=""
+    <div ref={ref} className={`message ${isOwner && "owner"}`}>
+      <Card style={{ width: 300, marginTop: 16 }}>
+        <Card.Meta
+          avatar={<Avatar src={senderPhotoURL || <UserOutlined />} />}
+          title={<Text type="secondary">{message.text}</Text>}
         />
-        <span>just now</span>
-      </div>
-      <div className="messageContent">
-        <p>{message.text}</p>
-        {message.img && <img src={message.img} alt="" />}
-      </div>
+        {message.img && <img src={message.img} alt="" style={{ marginTop: 10 }} />}
+      </Card>
     </div>
   );
 };
