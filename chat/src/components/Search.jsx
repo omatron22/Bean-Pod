@@ -55,7 +55,7 @@ const Search = () => {
     console.log("combinedId: ", combinedId);
     console.log("userId: ", user.uid);
     console.log("currentUser.uid ", currentUser.uid);
-    dispatch({ type: "CHANGE_USER", payload: user });
+    
         
 
     try {
@@ -68,30 +68,28 @@ const Search = () => {
 
         //create user chats
         await updateDoc(doc(db, "userChats", currentUser.uid), {
-          [combinedId + ".userInfo"]: {
             uid: user.uid,
             displayName: user.displayName,
             photoURL: user.photoURL,
-          },
-          [combinedId + ".date"]: serverTimestamp(),
+            [combinedId + ".date"]: serverTimestamp(),
         });
 
         await updateDoc(doc(db, "userChats", user.uid), {
-          [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
             photoURL: currentUser.photoURL,
-          },
-          [combinedId + ".date"]: serverTimestamp(),
+            [combinedId + ".date"]: serverTimestamp(),
         });
       }
     } catch (err) {}
 
+    dispatch({ type: "CHANGE_USER", payload: user });
     
 
     setUser(null);
     setUsername("")
   };
+  
 
   // Now we return the JSX correctly from the component
   return (

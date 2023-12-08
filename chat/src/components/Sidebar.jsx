@@ -9,18 +9,7 @@ export const Sidebar = () => {
       <Navbar/>
       <Search/> 
       <Chats/>
-      
     </div>
-    // <div className = "sidebar">
-    //   <form>
-    //     <Search/>
-    //     <form>
-    //       <Chats/>
-    //     </form>
-    //   </form>
-    //   <Navbar/>
-    // </div>
-
   );
 };
 
