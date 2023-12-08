@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   collection,
   query,
@@ -10,26 +10,16 @@ import {
   updateDoc,
   serverTimestamp, // This was missing
 } from "firebase/firestore";
-import { auth, firestore as db } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { firestore as db } from "../firebase";
+import { AuthContext } from "../context/AuthContext";
 
 const Search = () => {
 
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      console.log(user);
-    });
-  
-    return () => {
-      unsubscribe(); // Clean up the subscription
-    };
-  }, []);
+  const { currentUser } = useContext(AuthContext);
 
   const handleSearch = async () => {
     const q = query(
