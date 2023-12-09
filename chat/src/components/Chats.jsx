@@ -5,6 +5,7 @@ import { firestore as db } from "../firebase";
 import { ChatContext } from "../context/ChatContext";
 import { AuthContext } from "../context/AuthContext";
 import { UserOutlined } from '@ant-design/icons';
+import bean from "../img/bean.png";
 
 const Chats = () => {
   const [chats, setChats] = useState([]);
@@ -27,6 +28,24 @@ const Chats = () => {
     dispatch({ type: "CHANGE_USER", payload: chat });
   };
 
+  // useEffect(() => {
+  //   const getChats = () => {
+  //     const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+  //       setChats(doc.data());
+  //     });
+
+  //     return () => {
+  //       unsub();
+  //     };
+  //   };
+
+  //   currentUser.uid && getChats();
+  // }, [currentUser.uid]);
+
+  // const handleSelect = (u) => {
+  //   dispatch({ type: "CHANGE_USER", payload: u });
+  // };
+
   return (
     <List
       className="chats"
@@ -38,7 +57,7 @@ const Chats = () => {
           onClick={() => handleSelect(chat[1])}
         >
           <List.Item.Meta
-            avatar={<Avatar src={chat[1].photoURL || UserOutlined} />}
+            avatar src={chat[1].photoURL ? chat[1].photoURL : bean}
             title={<Text>{chat[1].displayName || 'Unknown User'}</Text>}
             description={<Paragraph>{chat[1].lastMessage?.text || 'No message yet'}</Paragraph>}
           />
