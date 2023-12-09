@@ -43,7 +43,7 @@ const Chats = () => {
               <List.Item.Meta
                 avatar={<Avatar src={chat.photoURL || bean} />}
                 title={<Text>{chat.displayName}</Text>}
-                description={<Paragraph>{chat.lastMessage.text}</Paragraph>}
+                description={<Paragraph>{chat.lastMessage?.text}</Paragraph>}
               />
             </List.Item>
           );
