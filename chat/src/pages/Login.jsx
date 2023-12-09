@@ -10,18 +10,18 @@ const Login = () => {
     <div style={{ display: 'flex', height: '100vh' }}>
       {/* Login Section */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        {/* Title Image with adjusted size and position */}
-        <div style={{ marginTop: '175px' }}> {/* Decrease this value to move the image higher */}
-          <img src={TitleImage} alt="Title" style={{ width: '325px', height: 'auto' }} /> {/* Increase width for a bigger image */}
+        {/* Title Image */}
+        <div>
+          <img src={TitleImage} alt="Title" style={{ width: '325px', height: 'auto' }} />
         </div>
 
         {/* Beanpod Logo */}
-        <div style={{ marginTop: '40px' }}>
+        <div style={{ marginTop: '20px' }}>
           <img src={Logo} alt="Beanpod Logo" style={{ width: '150px', height: 'auto' }} />
         </div>
         
         {/* Google Sign In Button */}
-        <div className='formContainer' style={{ marginTop: '-180px' }}>
+        <div className='formContainer' style={{ marginTop: '20px' }}>
           <button className="googleSignIn" onClick={signInWithGoogle}>
             <img src={googleIcon} alt="Google" /> Sign in with Google
           </button>
