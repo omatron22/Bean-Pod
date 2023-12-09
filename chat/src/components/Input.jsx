@@ -174,6 +174,7 @@ const Input = () => {
 
     await updateDoc(doc(db, "userChats", currentUser.uid), lastMessageUpdate);
     await updateDoc(doc(db, "userChats", data.user.uid), lastMessageUpdate);
+    
 
     setText(""); // Reset the text input
   };
@@ -194,11 +195,13 @@ const Input = () => {
         onChange={(e) => setText(e.target.value)}
         value={text}
         addonAfter={
-          <div>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <Upload {...uploadProps} showUploadList={false}>
               <PictureOutlined />
             </Upload>
-            <Button icon={<SendOutlined />} onClick={handleSend}></Button>
+            <div style={{ paddingLeft: '20px' }}> {/* Adjust padding as needed */}
+              <Button icon={<SendOutlined />} onClick={handleSend}></Button>
+            </div>
           </div>
         }
       />

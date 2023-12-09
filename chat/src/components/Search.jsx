@@ -390,7 +390,7 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
-    //setIsLoading(true); // Start loading on select
+    setIsLoading(true); // Start loading on select
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
@@ -402,20 +402,20 @@ const Search = () => {
       const res = await getDoc(docRef);
 
       if (!res.exists() || !isChatDataComplete(res.data())) {
-        //setTimeout(() => setIsLoading(false), 10000); // Stop loading after 10 seconds
         if (!res.exists()) {
           await setDoc(docRef, { messages: [] });
         }
 
         await updateOrCreateUserChat(doc(db, "userChats", currentUser.uid), user, combinedId);
         await updateOrCreateUserChat(doc(db, "userChats", user.uid), currentUser, combinedId);
+        setTimeout(() => setIsLoading(false), 10000); // Stop loading after 100 ms
       }
 
       dispatch({ type: "CHANGE_USER", payload: user });
       
     } catch (err) {
       console.error("Error in handleSelect:", err);
-      //setIsLoading(false); // Stop loading in case of error
+      setIsLoading(false); // Stop loading in case of error
     } finally {
       setUser(null);
       setUsername("");
