@@ -34,4 +34,4 @@ $ npm install
 $ npm run dev
 ```
 
-6. Sign into BeanPod with Google and enjoy!
+6. Use vite localhost, Sign into BeanPod with Google and enjoy!
