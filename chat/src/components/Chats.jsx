@@ -4,7 +4,6 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { firestore as db } from "../firebase";
 import { ChatContext } from "../context/ChatContext";
 import { AuthContext } from "../context/AuthContext";
-import { UserOutlined } from '@ant-design/icons';
 import bean from "../img/bean.png";
 
 const Chats = () => {
@@ -15,8 +14,8 @@ const Chats = () => {
 
   useEffect(() => {
     if (currentUser.uid) {
-      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (docSnapshot) => {
-        const fetchedChats = docSnapshot.data() ? Object.entries(docSnapshot.data()) : [];
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        const fetchedChats = doc.data() ? Object.entries(doc.data()) : [];
         setChats(fetchedChats.sort((a, b) => b[1].date - a[1].date));
       });
 
@@ -28,44 +27,33 @@ const Chats = () => {
     dispatch({ type: "CHANGE_USER", payload: chat });
   };
 
-  // useEffect(() => {
-  //   const getChats = () => {
-  //     const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-  //       setChats(doc.data());
-  //     });
-
-  //     return () => {
-  //       unsub();
-  //     };
-  //   };
-
-  //   currentUser.uid && getChats();
-  // }, [currentUser.uid]);
-
-  // const handleSelect = (u) => {
-  //   dispatch({ type: "CHANGE_USER", payload: u });
-  // };
-
   return (
     <List
       className="chats"
       dataSource={chats}
-      renderItem={([key, chat]) => (
-        <List.Item
-          key={chat[0]}
-          className="userChat"
-          onClick={() => handleSelect(chat[1])}
-        >
-          <List.Item.Meta
-            avatar src={chat[1].photoURL ? chat[1].photoURL : bean}
-            title={<Text>{chat[1].displayName || 'Unknown User'}</Text>}
-            description={<Paragraph>{chat[1].lastMessage?.text || 'No message yet'}</Paragraph>}
-          />
-        </List.Item>
-      )}
+      renderItem={([key, chat]) => {
+        // Only render chats that have a last message
+        if (chat[0] != null) {
+          return (
+            <List.Item
+              key={key}
+              className="userChat"
+              onClick={() => handleSelect(chat)}
+            >
+              <List.Item.Meta
+                avatar={<Avatar src={chat.photoURL || bean} />}
+                title={<Text>{chat.displayName}</Text>}
+                description={<Paragraph>{chat.lastMessage.text}</Paragraph>}
+              />
+            </List.Item>
+          );
+        }
+        return null;
+      }}
     />
   );
 };
 
 export default Chats;
+
 
