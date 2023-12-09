@@ -60,7 +60,6 @@ const Messages = () => {
       renderItem={(m) => (
         <List.Item>
           <List.Item.Meta
-            avatar={<Avatar src={m.senderPhotoURL} />}
             title={<Message message={m} />}
             //description={message.lastMessage ? formatTimestamp(message.lastMessage.timestamp) : 'No messages yet'}
           />

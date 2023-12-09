@@ -1,3 +1,100 @@
+// import React, { useContext, useState } from "react";
+// import { Input as AntInput, Button, Upload } from 'antd';
+// import { PictureOutlined, SendOutlined } from '@ant-design/icons';
+// import { AuthContext } from "../context/AuthContext";
+// import { ChatContext } from "../context/ChatContext";
+// import {
+//   arrayUnion,
+//   doc,
+//   serverTimestamp,
+//   Timestamp,
+//   updateDoc,
+// } from "firebase/firestore";
+// import { firestore as db, storage } from "../firebase";
+// import { v4 as uuid } from "uuid";
+// import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+
+// const Input = () => {
+//   const [text, setText] = useState("");
+//   const [imgFile, setImgFile] = useState(null);
+//   const { currentUser } = useContext(AuthContext);
+//   const { data } = useContext(ChatContext);
+
+//   const handleSend = async () => {
+//     if (imgFile) {
+//       const storageRef = ref(storage, uuid());
+//       const uploadTask = uploadBytesResumable(storageRef, imgFile);
+
+//       uploadTask.on(
+//         'state_changed',
+//         (error) => {
+//           console.log("image failed to upload");
+//         },
+//         async () => {
+//           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+//           await sendMessage(text, downloadURL);
+//         }
+//       );
+//     } else {
+//       await sendMessage(text);
+//     }
+//   };
+
+//   const sendMessage = async (text, img = null) => {
+//     await updateDoc(doc(db, "chats", data.chatId), {
+//       messages: arrayUnion({
+//         id: uuid(),
+//         text,
+//         senderId: currentUser.uid,
+//         date: Timestamp.now(),
+//         img,
+//       }),
+//     });
+
+//     // Update userChats for both sender and receiver
+//     const lastMessageUpdate = {
+//       [data.chatId + ".lastMessage"]: { text },
+//       [data.chatId + ".date"]: serverTimestamp(),
+//     };
+
+//     await updateDoc(doc(db, "userChats", currentUser.uid), lastMessageUpdate);
+//     await updateDoc(doc(db, "userChats", data.user.uid), lastMessageUpdate);
+
+//     setText("");
+//     setImgFile(null);
+//   };
+
+//   // Ant Design Upload component custom configuration
+//   const uploadProps = {
+//     beforeUpload: file => {
+//       setImgFile(file);
+//       return false; // Prevent auto-uploading
+//     },
+//     fileList: [], // Not displaying any file list
+//   };
+
+//   return (
+//     <div className="input">
+//       <AntInput
+//         type="text"
+//         placeholder="Type something..."
+//         onChange={(e) => setText(e.target.files[0])}
+//         value={text}
+//         addonAfter={
+//           <div>
+//             <Upload {...uploadProps} showUploadList={false}>
+//               <PictureOutlined />
+//             </Upload>
+//             <Button icon={<SendOutlined />} onClick={handleSend}></Button>
+//           </div>
+//         }
+//       />
+//     </div>
+//   );
+// };
+
+// export default Input;
+
 import React, { useContext, useState } from "react";
 import { Input as AntInput, Button, Upload } from 'antd';
 import { PictureOutlined, SendOutlined } from '@ant-design/icons';
@@ -21,18 +118,28 @@ const Input = () => {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    if (text.trim() === "" && !imgFile) {
+      return; // Avoid sending empty messages
+    }
+
     if (imgFile) {
-      const storageRef = ref(storage, uuid());
+      const storageRef = ref(storage, `images/${uuid()}`);
       const uploadTask = uploadBytesResumable(storageRef, imgFile);
 
       uploadTask.on(
         'state_changed',
+        (snapshot) => {
+          // Optional: Handle upload progress
+        },
         (error) => {
-          console.log("image failed to upload");
+          console.error("Image upload error:", error);
+          // Reset the image file state
+          setImgFile(null);
         },
         async () => {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
           await sendMessage(text, downloadURL);
+          setImgFile(null); // Reset imgFile state
         }
       );
     } else {
@@ -41,30 +148,28 @@ const Input = () => {
   };
 
   const sendMessage = async (text, img = null) => {
+    const messageData = {
+      id: uuid(),
+      text,
+      senderId: currentUser.uid,
+      date: Timestamp.now(),
+      img,
+    };
+
     await updateDoc(doc(db, "chats", data.chatId), {
-      messages: arrayUnion({
-        id: uuid(),
-        text,
-        senderId: currentUser.uid,
-        date: Timestamp.now(),
-        img,
-      }),
+      messages: arrayUnion(messageData),
     });
 
-    // Update userChats for both sender and receiver
     const lastMessageUpdate = {
-      [data.chatId + ".lastMessage"]: { text },
-      [data.chatId + ".date"]: serverTimestamp(),
+      [data.chatId + ".lastMessage"]: { text: text || 'Image', date: serverTimestamp() },
     };
 
     await updateDoc(doc(db, "userChats", currentUser.uid), lastMessageUpdate);
     await updateDoc(doc(db, "userChats", data.user.uid), lastMessageUpdate);
 
-    setText("");
-    setImgFile(null);
+    setText(""); // Reset the text input
   };
 
-  // Ant Design Upload component custom configuration
   const uploadProps = {
     beforeUpload: file => {
       setImgFile(file);
@@ -94,5 +199,4 @@ const Input = () => {
 };
 
 export default Input;
-
 
